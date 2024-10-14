@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo trabalhista</title>
+    <script>
+        function calcularReajuste()
+        {
+            var salario = parseFloat(document.getElementById("salario"). value);
+            if(isNaN(salario) || salario<=0){
+                document.getElementById("resultado").innerText = "Insira um salario valido";
+            }
+        var percentual,aumento,novoSalario;
+        if (salario <=280) {
+            percentual = 20;
+            
+        } else if (salario>280 && salario <= 700){
+            percentual = 15;
+        } else if (salario>700 && salario <= 1500){
+            percentual = 10;
+        } else {
+            percentual = 5;
+        }
+        aumento = (salario*percentual)/100;
+        novoSalario = salario + aumento;
+        document.getElementById("resultado").innerHTML = "Salário antes di reajuste: R$" + salario.toFixed(2) + "<br>" +"Percentual de aumento aplicado: "+ percentual + "%<br>"+"Valor do aumento: R$ " + aumento.toFixed(2) + "<br>" + "Novo Sálario, após o aumento: R$ "+novoSalario.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <label for="salario">Digite o salário atual do colaborador (em R$):</label>
+    <input type="number" id="salario" placeholder="Digite o salário">
+    <button onclick="calcularReajuste()">Calcular Rajuste</button>
+    <p id="resultado" ></p>
+    
+</body>
+</html>
